@@ -1,0 +1,14 @@
+# library folders
+/bin
+/lib
+
+# project cruft
+/pip-selfcheck.json
+/.project
+/.pydevproject
+
+# dev database
+/src/db.sqlite3
+
+# compiled bytecode
+*.pyc
