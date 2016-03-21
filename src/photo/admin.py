@@ -32,11 +32,25 @@ class FilmRollAdmin(admin.ModelAdmin):
         initial['photographer'] = request.user
         return initial
 
+class PhotoPaperAdmin(admin.ModelAdmin):
+    list_display = ('name', 'manufacturer_short_name', 'multigrade', 'grade')
+    list_filter = ('manufacturer__name', 'multigrade',)
+    def paper_short_name(self, obj):
+        return ("%s %s" % (obj.manufacturer.short_name, obj.name))
+
+    def manufacturer_short_name(self, obj):
+        return obj.manufacturer.short_name
+
+    manufacturer_short_name.admin_order_field = 'manufacturer__short_name'
+    manufacturer_short_name.short_description = "Manufacturer"
+
+    ordering = ('manufacturer__short_name', 'name')
+
 # Register your models here.
 admin.site.register(FilmFormat)
 admin.site.register(Manufacturer)
 admin.site.register(Film, FilmAdmin)
 admin.site.register(Developer)
 admin.site.register(FilmRoll, FilmRollAdmin)
-admin.site.register(PhotoPaper)
+admin.site.register(PhotoPaper, PhotoPaperAdmin)
 admin.site.register(PhotoPaperFinish)
