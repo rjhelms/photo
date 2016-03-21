@@ -33,6 +33,9 @@ class Film(models.Model):
     formats = models.ManyToManyField(FilmFormat)
     process = CharField(max_length=3, choices=PROCESSES)
     
+    class Meta:
+        ordering = ('manufacturer__short_name', 'name')
+    
     def __str__(self):
         return "{} {}".format(self.manufacturer.short_name, self.name)
 
