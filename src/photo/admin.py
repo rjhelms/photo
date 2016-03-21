@@ -23,10 +23,10 @@ class FilmAdmin(admin.ModelAdmin):
     ordering = ('manufacturer__short_name', 'name')
 
 class FilmRollAdmin(admin.ModelAdmin):
-    list_display = ('name', 'film', 'format', 'shot_date',)
+    list_display = ('name', 'film', 'format', 'shot_date', 'developed_date')
     list_filter = ('film', 'format', 'shot_date', 'developed_date',)
     prepopulated_fields = {'developed_speed': ('shot_speed',)}
-    
+
     def get_changeform_initial_data(self, request):
         initial = super().get_changeform_initial_data(request)
         initial['photographer'] = request.user
