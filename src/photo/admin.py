@@ -9,7 +9,7 @@ class FilmAdmin(admin.ModelAdmin):
     list_filter = ('manufacturer__name', 'speed', 'formats', 'process')
 
     def film_short_name(self, obj):
-        return ("%s %s" % (obj.manufacturer.short_name, obj.name))
+        return "%s %s" % (obj.manufacturer.short_name, obj.name)
 
     def manufacturer_short_name(self, obj):
         return obj.manufacturer.short_name
@@ -36,7 +36,7 @@ class PhotoPaperAdmin(admin.ModelAdmin):
     list_display = ('name', 'manufacturer_short_name', 'multigrade', 'grade')
     list_filter = ('manufacturer__name', 'multigrade',)
     def paper_short_name(self, obj):
-        return ("%s %s" % (obj.manufacturer.short_name, obj.name))
+        return "%s %s" % (obj.manufacturer.short_name, obj.name)
 
     def manufacturer_short_name(self, obj):
         return obj.manufacturer.short_name
