@@ -6,6 +6,7 @@
 /pip-selfcheck.json
 /.project
 /.pydevproject
+/.settings
 
 # dev database
 /src/db.sqlite3
