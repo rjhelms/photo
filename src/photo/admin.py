@@ -6,7 +6,7 @@ from photo.models import FilmFormat, Manufacturer, Film, Developer, FilmRoll, \
 
 class FilmAdmin(admin.ModelAdmin):
     list_display = ('film_short_name', 'manufacturer_short_name', 'speed',)
-    list_filter = ('manufacturer__name', 'speed', 'formats')
+    list_filter = ('manufacturer__name', 'speed', 'formats', 'process')
 
     def film_short_name(self, obj):
         return ("%s %s" % (obj.manufacturer.short_name, obj.name))

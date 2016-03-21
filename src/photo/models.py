@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.fields import CharField
 
 
 # Create your models here.
@@ -20,11 +21,18 @@ class Manufacturer(models.Model):
         return self.name
 
 class Film(models.Model):
+    PROCESSES = (
+        ("B&W", "black and white"),
+        ("C41", "C-41"),
+        ("E6", "E-6")
+    
+    )
     name = models.CharField(max_length=50)
     manufacturer = models.ForeignKey(Manufacturer)
     speed = models.IntegerField()
     formats = models.ManyToManyField(FilmFormat)
-
+    process = CharField(max_length=3, choices=PROCESSES)
+    
     def __str__(self):
         return "{} {}".format(self.manufacturer.short_name, self.name)
 
