@@ -44,6 +44,7 @@ class FilmRoll(models.Model):
     shot_date = models.DateField(blank=True, null=True)
     developed_date = models.DateField(blank=True, null=True)
     photographer = models.ForeignKey(auth.models.User, blank=True, null=True)
+    contact_sheet = models.ImageField(blank=True)
     
     def __str__(self):
         return self.name
