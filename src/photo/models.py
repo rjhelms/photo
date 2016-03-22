@@ -2,13 +2,13 @@
 Django models for the photo application.
 
 Models:
-    :model:'photo.Developer': a film developer
-    :model:'photo.Film': a type of film
-    :model:'photo.FilmFormat': a film format
-    :model:'photo.FilmRoll': an individual roll of film
-    :model:'photo.Manufacturer': a manufacturer of photo products
-    :model:'photo.PhotoPaper': a type of photo paper
-    :model:'photo.PhotoPaperFinish': a finish for photo paper, ie glossy, matte
+    :model:`photo.Developer`: a film developer
+    :model:`photo.Film`: a type of film
+    :model:`photo.FilmFormat`: a film format
+    :model:`photo.FilmRoll`: an individual roll of film
+    :model:`photo.Manufacturer`: a manufacturer of photo products
+    :model:`photo.PhotoPaper`: a type of photo paper
+    :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie glossy, matte
 """
 
 from django.contrib import auth
@@ -41,8 +41,8 @@ class Manufacturer(models.Model):
 
 class Film(models.Model):
     """
-    Stores a type of film, related to :model:'photo.FilmFormat' and
-    :model:'photo.Manufacturer'.
+    Stores a type of film, related to :model:`photo.FilmFormat` and
+    :model:`photo.Manufacturer`.
     """
     PROCESSES = (
         ("B&W", "black and white"),
@@ -57,7 +57,7 @@ class Film(models.Model):
     process = CharField(max_length=3, choices=PROCESSES)
 
     class Meta:
-        """Meta class for :model:'photo.Film'."""
+        """Meta class for :model:`photo.Film`."""
         ordering = ('manufacturer__short_name', 'name')
 
     def __str__(self):
@@ -65,7 +65,7 @@ class Film(models.Model):
 
 class Developer(models.Model):
     """
-    Stores a film developer, related to :model:'photo.Manufacturer'.
+    Stores a film developer, related to :model:`photo.Manufacturer`.
     """
     name = models.CharField(max_length=50)
     manufacturer = models.ForeignKey(Manufacturer)
@@ -76,8 +76,8 @@ class Developer(models.Model):
 
 class FilmRoll(models.Model):
     """
-    Stores an individual roll of film, related to :model:'photo.Film',
-    :model:'photo.FilmFormat', :model:'photo.Developer' and :model:'auth.User'.
+    Stores an individual roll of film, related to :model:`photo.Film`,
+    :model:`photo.FilmFormat`, :model:`photo.Developer` and :model:`auth.User`.
     """
     name = models.CharField(max_length=50, unique=True, db_index=True)
     film = models.ForeignKey(Film)
@@ -108,7 +108,7 @@ class PhotoPaperFinish(models.Model):
 class PhotoPaper(models.Model):
     """
     Stores a type of photo paper, related to :model:'photo.Manufacturer' and
-    :model:'photo.PhotoPaperFinish'.
+    :model:`photo.PhotoPaperFinish`.
     """
     PAPER_TYPE_CHOICES = (
         ('RC', "resin-coated"),

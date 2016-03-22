@@ -10,7 +10,7 @@ from photo.models import FilmFormat, Manufacturer, Film, Developer, FilmRoll, \
 
 class FilmAdmin(admin.ModelAdmin):
     """
-    Admin class for :model:`photo.Film'
+    Admin class for :model:`photo.Film`
     """
     list_display = ('film_short_name', 'manufacturer_short_name', 'speed',)
     list_filter = ('manufacturer__name', 'speed', 'formats', 'process')
@@ -33,7 +33,7 @@ class FilmAdmin(admin.ModelAdmin):
 
 class FilmRollAdmin(admin.ModelAdmin):
     """
-    Admin class for :model:`photo.FilmRoll'
+    Admin class for :model:`photo.FilmRoll`
     """
     list_display = ('name', 'film', 'format', 'shot_date', 'developed_date')
     list_filter = ('film', 'format', 'shot_date', 'developed_date',)
@@ -46,7 +46,7 @@ class FilmRollAdmin(admin.ModelAdmin):
 
 class PhotoPaperAdmin(admin.ModelAdmin):
     """
-    Admin class for :model:`photo.PhotoPaper'
+    Admin class for :model:`photo.PhotoPaper`
     """
     list_display = ('name', 'manufacturer_short_name', 'multigrade', 'grade')
     list_filter = ('manufacturer__name', 'multigrade',)
