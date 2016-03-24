@@ -3,9 +3,9 @@ Admin classes for photo application
 """
 
 from django.contrib import admin
-
+from django.contrib.admin.filters import RelatedOnlyFieldListFilter
 from photo.models import FilmFormat, Manufacturer, Film, Developer, FilmRoll, \
-    PhotoPaper, PhotoPaperFinish, Negative
+    PhotoPaper, PhotoPaperFinish, Frame
 
 
 class FilmAdmin(admin.ModelAdmin):
@@ -65,9 +65,9 @@ class PhotoPaperAdmin(admin.ModelAdmin):
 
     ordering = ('manufacturer__short_name', 'name')
 
-class NegativeAdmin(admin.ModelAdmin):
+class FrameAdmin(admin.ModelAdmin):
     """
-    Admin class for :model:`photo.Negative`
+    Admin class for :model:`photo.Frame`
     """
     list_display = ('film_roll', 'index', )
     list_filter = ('film_roll', 'film_roll__format', 'film_roll__film',
@@ -82,4 +82,4 @@ admin.site.register(Developer)
 admin.site.register(FilmRoll, FilmRollAdmin)
 admin.site.register(PhotoPaper, PhotoPaperAdmin)
 admin.site.register(PhotoPaperFinish)
-admin.site.register(Negative, NegativeAdmin)
+admin.site.register(Frame, FrameAdmin)

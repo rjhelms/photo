@@ -158,7 +158,7 @@ class PhotoPaper(models.Model):
     def __str__(self):
         return "{} {}".format(self.manufacturer.short_name, self.name)
 
-class Negative(models.Model):
+class Frame(models.Model):
     """
     Stores an individual negative, related to :model:`photo.FilmRoll`.
     """
@@ -171,20 +171,20 @@ class Negative(models.Model):
 
     def clean(self):
         """
-        Validates that a negative's index is unique for its FilmRoll.
+        Validates that a frame's index is unique for its FilmRoll.
         """
         if self.film_roll is None:
             raise ValidationError("Film roll is mandatory.")
 
-        existing_negatives = Negative.objects.filter(film_roll=self.film_roll)
-        for item in existing_negatives:
+        existing_frames = Frame.objects.filter(film_roll=self.film_roll)
+        for item in existing_frames:
             if (item.id != self.id) & (item.index == self.index):
-                raise ValidationError("Index must be unique for each negative "
+                raise ValidationError("Index must be unique for each frame "
                                       "on a roll.")
 
     class Meta:
         """
-        Meta class for :model:`photo.Negative`
+        Meta class for :model:`photo.Frame`
         """
         ordering = ('film_roll__name', 'index')
 
