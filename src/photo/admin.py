@@ -69,9 +69,16 @@ class FrameAdmin(admin.ModelAdmin):
     """
     Admin class for :model:`photo.Frame`
     """
-    list_display = ('film_roll', 'index', )
-    list_filter = ('film_roll', 'film_roll__format', 'film_roll__film',
+    list_display = ('film_roll', 'frame_number', 'description')
+    list_filter = (('film_roll', RelatedOnlyFieldListFilter),
+                   'film_roll__format', 'film_roll__film',
                    'film_roll__shot_date', 'film_roll__developed_date')
+
+    def frame_number(self, obj):
+        return obj.frame_number()
+
+    frame_number.admin_order_field = 'index'
+
     ordering = ('film_roll', 'index')
 
 # Register your models here.

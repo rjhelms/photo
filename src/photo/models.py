@@ -163,7 +163,7 @@ class Frame(models.Model):
     Stores an individual negative, related to :model:`photo.FilmRoll`.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    index = models.CharField(max_length=10)
+    index = models.SmallIntegerField()
     film_roll = models.ForeignKey(FilmRoll)
     description = models.TextField(blank=True)
     scan = models.ImageField(blank=True,
@@ -187,6 +187,12 @@ class Frame(models.Model):
         Meta class for :model:`photo.Frame`
         """
         ordering = ('film_roll__name', 'index')
+
+    def frame_number(self):
+        if self.index >= 0:
+            return str(self.index)
+        elif self.index == -1:
+            return "00"
 
     def __str__(self):
         return "{}-{}".format(self.film_roll.name, self.index)
