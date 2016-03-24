@@ -13,7 +13,7 @@ class FilmAdmin(admin.ModelAdmin):
     Admin class for :model:`photo.Film`
     """
     list_display = ('film_short_name', 'manufacturer_short_name', 'speed',)
-    list_filter = ('manufacturer__name', 'speed', 'formats', 'process')
+    list_filter = ('manufacturer', 'speed', 'formats', 'process')
 
     def film_short_name(self, obj):
         """Short name of film, for display in admin lists."""
@@ -49,7 +49,7 @@ class PhotoPaperAdmin(admin.ModelAdmin):
     Admin class for :model:`photo.PhotoPaper`
     """
     list_display = ('name', 'manufacturer_short_name', 'multigrade', 'grade')
-    list_filter = ('manufacturer__name', 'multigrade',)
+    list_filter = ('manufacturer', 'multigrade',)
     def paper_short_name(self, obj):
         """Short name of photo paper, for display in admin lists."""
         return "%s %s" % (obj.manufacturer.short_name, obj.name)
