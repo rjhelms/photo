@@ -8,8 +8,9 @@
 /.pydevproject
 /.settings
 
-# dev database
+# dev database and media
 /src/db.sqlite3
+/src/media
 
 # compiled bytecode
 *.pyc
