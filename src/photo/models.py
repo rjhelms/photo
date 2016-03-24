@@ -17,6 +17,8 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.fields import CharField
 
+from .utils import UploadToPathAndRename
+
 
 # Create your models here.
 class FilmFormat(models.Model):
@@ -89,7 +91,9 @@ class FilmRoll(models.Model):
     shot_date = models.DateField(blank=True, null=True)
     developed_date = models.DateField(blank=True, null=True)
     photographer = models.ForeignKey(auth.models.User, blank=True, null=True)
-    contact_sheet = models.ImageField(blank=True)
+    contact_sheet = models.ImageField(blank=True,
+                                      upload_to=UploadToPathAndRename
+                                      ('contacts'))
 
     def __str__(self):
         return self.name
