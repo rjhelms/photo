@@ -65,6 +65,15 @@ class PhotoPaperAdmin(admin.ModelAdmin):
 
     ordering = ('manufacturer__short_name', 'name')
 
+class NegativeAdmin(admin.ModelAdmin):
+    """
+    Admin class for :model:`photo.Negative`
+    """
+    list_display = ('film_roll', 'index', )
+    list_filter = ('film_roll', 'film_roll__format', 'film_roll__film',
+                   'film_roll__shot_date', 'film_roll__developed_date')
+    ordering = ('film_roll', 'index')
+
 # Register your models here.
 admin.site.register(FilmFormat)
 admin.site.register(Manufacturer)
@@ -73,4 +82,4 @@ admin.site.register(Developer)
 admin.site.register(FilmRoll, FilmRollAdmin)
 admin.site.register(PhotoPaper, PhotoPaperAdmin)
 admin.site.register(PhotoPaperFinish)
-admin.site.register(Negative)
+admin.site.register(Negative, NegativeAdmin)
