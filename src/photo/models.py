@@ -148,3 +148,32 @@ class PhotoPaper(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.manufacturer.short_name, self.name)
+
+class Negative(models.Model):
+    """
+    Stores an individual negative, related to :model:`photo.FilmRoll`.
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    index = models.CharField(max_length=10)
+    film_roll = models.ForeignKey(FilmRoll)
+    description = models.TextField(blank=True)
+    scan = models.ImageField(blank=True,
+                             upload_to=UploadToPathAndRename('negatives'))
+
+    def clean(self):
+        """
+        Validates that a negative's index is unique for its FilmRoll.
+        """
+        if self.film_roll is None:
+            raise ValidationError("Film roll is mandatory.")
+
+        existing_negatives = Negative.objects.filter(film_roll=self.film_roll)
+        for item in existing_negatives:
+            if (item.id != self.id) & (item.index == self.index):
+                raise ValidationError("Index must be unique for each negative "
+                                      "on a roll.")
+
+    ordering = ('film_roll__name', 'index')
+
+    def __str__(self):
+        return "{}-{}".format(self.film_roll.name, self.index)

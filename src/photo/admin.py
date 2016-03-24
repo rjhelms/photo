@@ -5,7 +5,7 @@ Admin classes for photo application
 from django.contrib import admin
 
 from photo.models import FilmFormat, Manufacturer, Film, Developer, FilmRoll, \
-    PhotoPaper, PhotoPaperFinish
+    PhotoPaper, PhotoPaperFinish, Negative
 
 
 class FilmAdmin(admin.ModelAdmin):
@@ -73,3 +73,4 @@ admin.site.register(Developer)
 admin.site.register(FilmRoll, FilmRollAdmin)
 admin.site.register(PhotoPaper, PhotoPaperAdmin)
 admin.site.register(PhotoPaperFinish)
+admin.site.register(Negative)
