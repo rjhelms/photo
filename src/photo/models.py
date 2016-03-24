@@ -86,14 +86,23 @@ class FilmRoll(models.Model):
     film = models.ForeignKey(Film)
     format = models.ForeignKey(FilmFormat)
     developer = models.ForeignKey(Developer, blank=True, null=True)
-    shot_speed = models.PositiveIntegerField()
-    developed_speed = models.PositiveIntegerField()
+    shot_speed = models.PositiveIntegerField(blank=True)
+    developed_speed = models.PositiveIntegerField(blank=True)
     shot_date = models.DateField(blank=True, null=True)
     developed_date = models.DateField(blank=True, null=True)
     photographer = models.ForeignKey(auth.models.User, blank=True, null=True)
     contact_sheet = models.ImageField(blank=True,
                                       upload_to=UploadToPathAndRename
                                       ('contacts'))
+
+    def clean(self):
+        """
+        Sets shot_speed and developed_speed if they are not already specified.
+        """
+        if self.shot_speed is None:
+            self.shot_speed = self._base_speed()
+        if self.developed_speed is None:
+            self.developed_speed = self.shot_speed
 
     def __str__(self):
         return self.name
