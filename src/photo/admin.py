@@ -75,6 +75,7 @@ class FrameAdmin(admin.ModelAdmin):
                    'film_roll__shot_date', 'film_roll__developed_date')
 
     def frame_number(self, obj):
+        """Wrap the frame_number method as a method of FrameAdmin"""
         return obj.frame_number()
 
     frame_number.admin_order_field = 'index'

@@ -146,6 +146,10 @@ class PhotoPaper(models.Model):
     finishes = models.ManyToManyField(PhotoPaperFinish)
 
     def clean(self):
+        """
+        Validates a photo paper by ensuring that multigrade papers do not have
+        a grade set, and graded papers do.
+        """
         if self.multigrade is True:
             if self.grade is not None:
                 raise ValidationError("Multigrade papers can not have a "
@@ -189,6 +193,10 @@ class Frame(models.Model):
         ordering = ('film_roll__name', 'index')
 
     def frame_number(self):
+        """
+        Converts the index into a string representing what would be printed on
+        the film. This is needed to handle frame 00.
+        """
         if self.index >= 0:
             return str(self.index)
         elif self.index == -1:
