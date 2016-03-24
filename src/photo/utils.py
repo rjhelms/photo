@@ -24,7 +24,11 @@ class UploadToPathAndRename(object):
         ext = filename.split('.')[-1]
         # get filename
         if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
+            if isinstance(instance.pk, uuid.UUID):
+                filename = '{}.{}'.format(instance.pk, ext)
+            else:
+                raise TypeError("UploadToPathAndRename should only be called "
+                                "for objects with UUID primary keys.")
         else:
             # set filename as random string
             filename = '{}.{}'.format(uuid.uuid4().hex, ext)
