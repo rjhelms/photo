@@ -10,6 +10,7 @@ Models:
     :model:`photo.PhotoPaper`: a type of photo paper
     :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie glossy, matte
 """
+import uuid
 
 from django.contrib import auth
 from django.core.exceptions import ValidationError
@@ -49,7 +50,6 @@ class Film(models.Model):
         ("C41", "C-41"),
         ("E6", "E-6")
     )
-
     name = models.CharField(max_length=50)
     manufacturer = models.ForeignKey(Manufacturer)
     speed = models.IntegerField()
@@ -79,6 +79,7 @@ class FilmRoll(models.Model):
     Stores an individual roll of film, related to :model:`photo.Film`,
     :model:`photo.FilmFormat`, :model:`photo.Developer` and :model:`auth.User`.
     """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50, unique=True, db_index=True)
     film = models.ForeignKey(Film)
     format = models.ForeignKey(FilmFormat)
