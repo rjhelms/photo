@@ -182,7 +182,11 @@ class Negative(models.Model):
                 raise ValidationError("Index must be unique for each negative "
                                       "on a roll.")
 
-    ordering = ('film_roll__name', 'index')
+    class Meta:
+        """
+        Meta class for :model:`photo.Negative`
+        """
+        ordering = ('film_roll__name', 'index')
 
     def __str__(self):
         return "{}-{}".format(self.film_roll.name, self.index)
