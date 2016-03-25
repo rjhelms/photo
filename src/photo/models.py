@@ -173,34 +173,22 @@ class Frame(models.Model):
     scan = models.ImageField(blank=True,
                              upload_to=UploadToPathAndRename('frames'))
 
-    def clean(self):
-        """
-        Validates that a frame's index is unique for its FilmRoll.
-        """
-        if self.film_roll is None:
-            raise ValidationError("Film roll is mandatory.")
-
-        existing_frames = Frame.objects.filter(film_roll=self.film_roll)
-        for item in existing_frames:
-            if (item.id != self.id) & (item.index == self.index):
-                raise ValidationError("Index must be unique for each frame "
-                                      "on a roll.")
-
     class Meta:
         """
         Meta class for :model:`photo.Frame`
         """
         ordering = ('film_roll__name', 'index')
+        unique_together = ('index', 'film_roll')
 
     def frame_number(self):
         """
         Converts the index into a string representing what would be printed on
         the film. This is needed to handle frame 00.
         """
-        if self.index >= 0:
-            return str(self.index)
-        elif self.index == -1:
+        if self.index == -1:
             return "00"
+        else:
+            return str(self.index)
 
     def __str__(self):
         return "{}-{}".format(self.film_roll.name, self.frame_number())
