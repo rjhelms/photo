@@ -171,7 +171,7 @@ class Frame(models.Model):
     film_roll = models.ForeignKey(FilmRoll)
     description = models.TextField(blank=True)
     scan = models.ImageField(blank=True,
-                             upload_to=UploadToPathAndRename('negatives'))
+                             upload_to=UploadToPathAndRename('frames'))
 
     def clean(self):
         """
