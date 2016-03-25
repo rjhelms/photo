@@ -275,19 +275,52 @@ class PrintTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
+            models.Manufacturer.objects.create(name="manufacturer",
                                                short_name="test")
         cls.finish_glossy = models.PhotoPaperFinish.objects.create(name=
                                                                    "glossy")
         cls.finish_matte = models.PhotoPaperFinish.objects.create(name=
                                                                   "matte")
         cls.photo_paper = \
-            models.PhotoPaper.objects.create(name="test photo_paper",
+            models.PhotoPaper.objects.create(name="photo_paper",
                                              manufacturer=manufacturer,
                                              paper_type="RC",
                                              multigrade=True)
         cls.photo_paper.finishes.add(cls.finish_glossy)
         cls.photo_paper.save()
+
+        cls.film_format_35mm = models.FilmFormat.objects.create(name="35mm",
+                                                                roll_film=True)
+        cls.film_format_120 = models.FilmFormat.objects.create(name="120",
+                                                               roll_film=True)
+
+        film = models.Film.objects.create(name="film",
+                                          manufacturer=manufacturer,
+                                          speed=200)
+        film.formats.add(cls.film_format_35mm)
+        film.formats.add(cls.film_format_120)
+        film.save()
+
+        cls.film_roll_120 = \
+            models.FilmRoll.objects.create(name="film_roll_120",
+                                           film=film,
+                                           format=cls.film_format_120,
+                                           shot_speed=200, developed_speed=200)
+        cls.frame_120 = \
+            models.Frame.objects.create(index=1, film_roll=cls.film_roll_120)
+
+        cls.film_roll_35mm = \
+            models.FilmRoll.objects.create(name="film_roll_35mm",
+                                           film=film,
+                                           format=cls.film_format_35mm,
+                                           shot_speed=200, developed_speed=200)
+        cls.frame_35mm = \
+            models.Frame.objects.create(index=1, film_roll=cls.film_roll_35mm)
+
+        cls.enlarger = models.Enlarger.objects.create(name="enlarger", type=0,
+                                                      color_head=False)
+        cls.enlarger.formats.add(cls.film_format_35mm)
+        cls.enlarger.save()
 
     def test_clean_valid_finish(self):
         """
@@ -308,6 +341,29 @@ class PrintTestCase(TestCase):
                                   finish=self.finish_matte)
         self.assertRaises(ValidationError, test_print.clean)
 
+    def test_clean_valid_enlarger(self):
+        """
+        Test Print.clean, for valid combination of format and enlarger.
+        """
+        test_print = models.Print(paper=self.photo_paper,
+                                  finish=self.finish_glossy,
+                                  frame=self.frame_35mm,
+                                  enlarger=self.enlarger)
+        try:
+            test_print.clean()
+        except ValidationError:
+            self.fail("Valid Print raised ValidationError")
+
+    def test_clean_invalid_enlarger(self):
+        """
+        Test Print.clean, for invalid combination of format and enlarger.
+        """
+        test_print = models.Print(paper=self.photo_paper,
+                                  finish=self.finish_glossy,
+                                  frame=self.frame_120,
+                                  enlarger=self.enlarger)
+        self.assertRaises(ValidationError, test_print.clean)
+
     def test_str(self):
         """
         Test the __str__ method on :model:`photo.Print`
@@ -315,3 +371,15 @@ class PrintTestCase(TestCase):
         test_print = models.Print(date=date(2012, 2, 2), sequence=1)
         self.assertEqual(str(test_print), "20120202-1",
                          "Print.__str__ returned unexpected value.")
+
+class EnlargerTestCase(TestCase):
+    """
+    Tests for :model:`photo.Enlarger`
+    """
+    def test_str(self):
+        """
+        Test the __str__ method on :model:`photo.Enlarger`
+        """
+        test_enlarger = models.Enlarger(name="test enlarger")
+        self.assertEqual(str(test_enlarger), "test enlarger",
+                         "Enlarger.__str__ return unexpected value.")

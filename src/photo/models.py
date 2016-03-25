@@ -3,12 +3,16 @@ Django models for the photo application.
 
 Models:
     :model:`photo.Developer`: a film developer
+    :model:`photo.Enlarger`: a photographic enlarger
     :model:`photo.Film`: a type of film
     :model:`photo.FilmFormat`: a film format
     :model:`photo.FilmRoll`: an individual roll of film
+    :model:`photo.Frame`: a frame on a film roll
     :model:`photo.Manufacturer`: a manufacturer of photo products
     :model:`photo.PhotoPaper`: a type of photo paper
-    :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie glossy, matte
+    :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie 
+        glossy, matte
+    :model:`photo.Print`: an individual print
 """
 import uuid
 
@@ -193,10 +197,27 @@ class Frame(models.Model):
     def __str__(self):
         return "{}-{}".format(self.film_roll.name, self.frame_number())
 
+class Enlarger(models.Model):
+    """
+    Stores a model of enlarger, related to :model:`photo.FilmFormat`.
+    """
+    TYPE_CHOICES = (
+        (0, "Condenser"),
+        (1, "Diffuser"),
+    )
+    name = models.CharField(max_length=100)
+    type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES)
+    color_head = models.BooleanField()
+    formats = models.ManyToManyField(FilmFormat)
+
+    def __str__(self):
+        return self.name
+
 class Print(models.Model):
     """
-    Stores an individual print, related to :model:`photo.Frame`,
-    :model:`photo.PhotoPaper` and :model:`photo.PhotoPaperFinish
+    Stores an individual print, related to :model:`photo.Enlarger`,
+    :model:`photo.Frame`, :model:`photo.PhotoPaper` and 
+    :model:`photo.PhotoPaperFinish.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField()
@@ -206,6 +227,7 @@ class Print(models.Model):
     finish = models.ForeignKey(PhotoPaperFinish)
     scan = models.ImageField(blank=True,
                              upload_to=UploadToPathAndRename('prints'))
+    enlarger = models.ForeignKey(Enlarger, blank=True, null=True)
 
     def clean(self):
         """
@@ -214,7 +236,10 @@ class Print(models.Model):
         """
         if self.finish not in self.paper.finishes.all():
             raise ValidationError("Invalid combination of paper and finish.")
-
+        if self.enlarger is not None:
+            if self.frame.film_roll.format not in self.enlarger.formats.all():
+                raise ValidationError("Invalid combination of negative and "
+                                      "enlarger")
     class Meta:
         """Metadata for :model:`photo.Print`"""
         ordering = ('date', 'sequence')
@@ -222,3 +247,4 @@ class Print(models.Model):
 
     def __str__(self):
         return "{:%Y%m%d}-{}".format(self.date, self.sequence)
+

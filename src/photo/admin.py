@@ -4,8 +4,9 @@ Admin classes for photo application
 
 from django.contrib import admin
 from django.contrib.admin.filters import RelatedOnlyFieldListFilter
+
 from photo.models import FilmFormat, Manufacturer, Film, Developer, FilmRoll, \
-    PhotoPaper, PhotoPaperFinish, Frame, Print
+    PhotoPaper, PhotoPaperFinish, Frame, Print, Enlarger
 
 
 class FilmAdmin(admin.ModelAdmin):
@@ -92,3 +93,4 @@ admin.site.register(PhotoPaper, PhotoPaperAdmin)
 admin.site.register(PhotoPaperFinish)
 admin.site.register(Frame, FrameAdmin)
 admin.site.register(Print)
+admin.site.register(Enlarger)

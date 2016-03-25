@@ -142,13 +142,21 @@
 </tr>
 <tr class="even">
 <td>info</td>
+<td>photo.migrations.0010_auto_20160325_2233</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>
+<td>Ignoring entire file</td>
+</tr>
+<tr class="odd">
+<td>info</td>
 <td>photo.tests.test_utils</td>
 <td>&#160;</td>
 <td>10</td>
 <td>0</td>
 <td>Locally disabling too-few-public-methods (R0903)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>info</td>
 <td>photo.tests.test_utils</td>
 <td>&#160;</td>
@@ -156,7 +164,7 @@
 <td>0</td>
 <td>Locally disabling invalid-name (C0103)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>info</td>
 <td>photo.tests.test_utils</td>
 <td>&#160;</td>
@@ -173,7 +181,7 @@
 <body>
 <div>
 <h1>Report</h1>
-<p>319 statements analysed.</p><div>
+<p>357 statements analysed.</p><div>
 <h2>Statistics by type</h2>
 <table>
 <tr class="header">
@@ -187,23 +195,23 @@
 <tr class="even">
 <td>module</td>
 <td>10</td>
-<td>10</td>
-<td>=</td>
+<td>11</td>
+<td>-1.00</td>
 <td>100.00</td>
 <td>0.00</td>
 </tr>
 <tr class="odd">
 <td>class</td>
-<td>29</td>
-<td>29</td>
-<td>=</td>
+<td>31</td>
+<td>32</td>
+<td>-1.00</td>
 <td>100.00</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
 <td>method</td>
-<td>55</td>
-<td>55</td>
+<td>59</td>
+<td>59</td>
 <td>=</td>
 <td>100.00</td>
 <td>0.00</td>
@@ -227,17 +235,17 @@
   | | \-filters (photo.admin)
   | \-auth (photo.models)
   \-core 
-  | \-exceptions (photo.tests.test_models,photo.models)
+  | \-exceptions (photo.models,photo.tests.test_models)
   \-db 
   | \-models (photo.models)
   |   \-fields (photo.models)
   \-shortcuts (photo.views)
-  \-test (photo.tests.test_utils,photo.tests.test_models)
+  \-test (photo.tests.test_models,photo.tests.test_utils)
   \-utils 
     \-deconstruct (photo.utils)
 photo 
-  \-models (photo.admin,photo.tests.test_models)
-  \-utils (photo.tests.test_utils,photo.models)</pre></div>
+  \-models (photo.tests.test_models,photo.admin)
+  \-utils (photo.models,photo.tests.test_utils)</pre></div>
 <div>
 <h2>Raw metrics</h2>
 <table>
@@ -250,31 +258,31 @@ photo
 </tr>
 <tr class="even">
 <td>code</td>
-<td>409</td>
-<td>52.71</td>
-<td>409</td>
-<td>=</td>
+<td>471</td>
+<td>54.45</td>
+<td>501</td>
+<td>-30.00</td>
 </tr>
 <tr class="odd">
 <td>docstring</td>
-<td>254</td>
-<td>32.73</td>
-<td>254</td>
+<td>271</td>
+<td>31.33</td>
+<td>271</td>
 <td>=</td>
 </tr>
 <tr class="even">
 <td>comment</td>
 <td>9</td>
-<td>1.16</td>
-<td>9</td>
-<td>=</td>
+<td>1.04</td>
+<td>11</td>
+<td>-2.00</td>
 </tr>
 <tr class="odd">
 <td>empty</td>
-<td>104</td>
-<td>13.40</td>
-<td>104</td>
-<td>=</td>
+<td>114</td>
+<td>13.18</td>
+<td>119</td>
+<td>-5.00</td>
 </tr>
 </table>
 </div>
@@ -313,8 +321,8 @@ photo
 <tr class="even">
 <td>convention</td>
 <td>0</td>
-<td>0</td>
-<td>=</td>
+<td>6</td>
+<td>-6.00</td>
 </tr>
 <tr class="odd">
 <td>refactor</td>
@@ -371,7 +379,7 @@ photo
 </tr>
 <tr class="even">
 <td>file-ignored</td>
-<td>9</td>
+<td>10</td>
 </tr>
 <tr class="odd">
 <td>no-self-use</td>
@@ -389,7 +397,7 @@ photo
 </div>
 <div>
 <h2>Global evaluation</h2>
-Your code has been rated at 9.81/10 (previous run: 9.81/10, +0.00)</div>
+Your code has been rated at 9.83/10 (previous run: 9.67/10, +0.16)</div>
 </div>
 </body>
 </html>
