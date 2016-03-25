@@ -10,7 +10,7 @@ Models:
     :model:`photo.Frame`: a frame on a film roll
     :model:`photo.Manufacturer`: a manufacturer of photo products
     :model:`photo.PhotoPaper`: a type of photo paper
-    :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie 
+    :model:`photo.PhotoPaperFinish`: a finish for photo paper, ie
         glossy, matte
     :model:`photo.Print`: an individual print
 """
@@ -216,7 +216,7 @@ class Enlarger(models.Model):
 class Print(models.Model):
     """
     Stores an individual print, related to :model:`photo.Enlarger`,
-    :model:`photo.Frame`, :model:`photo.PhotoPaper` and 
+    :model:`photo.Frame`, :model:`photo.PhotoPaper` and
     :model:`photo.PhotoPaperFinish.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

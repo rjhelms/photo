@@ -1,0 +1,163 @@
+************* Module photo.utils
+I: 10, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
+************* Module photo.admin
+R: 19, 4: Method could be a function (no-self-use)
+R: 23, 4: Method could be a function (no-self-use)
+R: 54, 4: Method could be a function (no-self-use)
+R: 58, 4: Method could be a function (no-self-use)
+R: 78, 4: Method could be a function (no-self-use)
+************* Module photo.views
+W:  4, 0: Unused render imported from django.shortcuts (unused-import)
+************* Module photo.migrations.0007_auto_20160324_2303
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0001_initial
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0004_auto_20160324_1916
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0005_auto_20160324_1927
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0002_auto_20160324_1753
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0003_negative_squashed_0004_auto_20160324_1839
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0009_auto_20160325_0242
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0008_auto_20160325_0211
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0006_auto_20160324_2225
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0010_auto_20160325_2233
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.tests.test_utils
+I: 10, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
+I: 15, 0: Locally disabling invalid-name (C0103) (locally-disabled)
+I: 55, 0: Locally disabling invalid-name (C0103) (locally-disabled)
+
+
+Report
+======
+358 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |10     |10         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |31     |31         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |59     |59         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    django 
+      \-apps (photo.apps)
+      \-contrib 
+      | \-admin (photo.admin)
+      | | \-filters (photo.admin)
+      | \-auth (photo.models)
+      \-core 
+      | \-exceptions (photo.models,photo.tests.test_models)
+      \-db 
+      | \-models (photo.models)
+      |   \-fields (photo.models)
+      \-shortcuts (photo.views)
+      \-test (photo.tests.test_utils,photo.tests.test_models)
+      \-utils 
+        \-deconstruct (photo.utils)
+    photo 
+      \-models (photo.admin,photo.tests.test_models)
+      \-utils (photo.models,photo.tests.test_utils)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |472    |54.13 |472      |=          |
++----------+-------+------+---------+-----------+
+|docstring |276    |31.65 |276      |=          |
++----------+-------+------+---------+-----------+
+|comment   |9      |1.03  |9        |=          |
++----------+-------+------+---------+-----------+
+|empty     |115    |13.19 |115      |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |0        |=          |
++-----------+-------+---------+-----------+
+|refactor   |5      |5        |=          |
++-----------+-------+---------+-----------+
+|warning    |1      |1        |=          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |=          |
++-----------+-------+---------+-----------+
+
+
+
+% errors / warnings by module
+-----------------------------
+
++------------+------+--------+---------+-----------+
+|module      |error |warning |refactor |convention |
++============+======+========+=========+===========+
+|photo.views |0.00  |100.00  |0.00     |0.00       |
++------------+------+--------+---------+-----------+
+|photo.admin |0.00  |0.00    |100.00   |0.00       |
++------------+------+--------+---------+-----------+
+
+
+
+Messages
+--------
+
++-----------------+------------+
+|message id       |occurrences |
++=================+============+
+|file-ignored     |10          |
++-----------------+------------+
+|no-self-use      |5           |
++-----------------+------------+
+|locally-disabled |4           |
++-----------------+------------+
+|unused-import    |1           |
++-----------------+------------+
+
+
+
+Global evaluation
+-----------------
+Your code has been rated at 9.83/10 (previous run: 9.83/10, +0.00)
+
