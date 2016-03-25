@@ -203,4 +203,4 @@ class Frame(models.Model):
             return "00"
 
     def __str__(self):
-        return "{}-{}".format(self.film_roll.name, self.index)
+        return "{}-{}".format(self.film_roll.name, self.frame_number())
