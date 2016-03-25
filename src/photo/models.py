@@ -204,3 +204,33 @@ class Frame(models.Model):
 
     def __str__(self):
         return "{}-{}".format(self.film_roll.name, self.frame_number())
+
+class Print(models.Model):
+    """
+    Stores an individual print, related to :model:`photo.Frame`,
+    :model:`photo.PhotoPaper` and :model:`photo.PhotoPaperFinish
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    date = models.DateField()
+    sequence = models.SmallIntegerField()
+    frame = models.ForeignKey(Frame)
+    paper = models.ForeignKey(PhotoPaper)
+    finish = models.ForeignKey(PhotoPaperFinish)
+    scan = models.ImageField(blank=True,
+                             upload_to=UploadToPathAndRename('prints'))
+
+    def clean(self):
+        """
+        Validates that the selected paper finish is valid for the selected
+        paper.
+        """
+        if self.finish not in self.paper.finishes.all():
+            raise ValidationError("Invalid combination of paper and finish.")
+
+    class Meta:
+        """Metadata for :model:`photo.Print`"""
+        ordering = ('date', 'sequence')
+        unique_together = ('date', 'sequence')
+
+    def __str__(self):
+        return "{:%Y%m%d}-{}".format(self.date, self.sequence)
