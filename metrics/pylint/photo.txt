@@ -35,7 +35,7 @@ I:  1, 0: Ignoring entire file (file-ignored)
 
 Report
 ======
-425 statements analysed.
+474 statements analysed.
 
 Statistics by type
 ------------------
@@ -47,7 +47,7 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |class    |33     |33         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |74     |72         |+2.00      |100.00      |6.76     |
+|method   |84     |84         |=          |100.00      |13.10    |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
@@ -74,7 +74,7 @@ External dependencies
       \-utils 
         \-deconstruct (photo.utils)
     photo 
-      \-models (photo.admin,photo.tests.test_models)
+      \-models (photo.tests.test_models,photo.admin)
       \-utils (photo.tests.test_utils,photo.models)
 
 
@@ -85,13 +85,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |565    |52.80 |551      |+14.00     |
+|code      |643    |52.62 |643      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |355    |33.18 |347      |+8.00      |
+|docstring |404    |33.06 |404      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |10     |0.93  |10       |=          |
+|comment   |23     |1.88  |23       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |140    |13.08 |138      |+2.00      |
+|empty     |152    |12.44 |152      |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -115,7 +115,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |1        |-1.00      |
+|convention |0      |11       |-11.00     |
 +-----------+-------+---------+-----------+
 |refactor   |5      |5        |=          |
 +-----------+-------+---------+-----------+
@@ -158,5 +158,5 @@ Messages
 
 Global evaluation
 -----------------
-Your code has been rated at 9.86/10 (previous run: 9.83/10, +0.03)
+Your code has been rated at 9.87/10 (previous run: 9.64/10, +0.23)
 

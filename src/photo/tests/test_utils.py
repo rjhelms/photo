@@ -176,3 +176,111 @@ class StopTimeConversionTestCase(TestCase):
             utils.StopTimeConversion.adjust_time_by_points(12, 0), 12)
         self.assertEqual(
             utils.StopTimeConversion.adjust_time_by_points(12, -12), 6)
+
+    def test_resize_print_enlarge(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a constant-aspect enlargement.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':8, 'y':12}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            2)
+
+    def test_resize_print_same(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a constant-aspect print of same size.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':4, 'y':6}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            0)
+
+    def test_resize_print_reduce(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a constant-aspect reduction.
+        """
+        old_print = {'x':8, 'y':12}
+        new_print = {'x':4, 'y':6}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            - 2)
+
+    def test_resize_print_enlarge_high_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a higher-aspect ratio enlargement.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':8, 'y':10}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            2)
+
+    def test_resize_print_same_high_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a higher-aspect ratio print of same size.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':4, 'y':5}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            0)
+
+    def test_resize_print_reduce_high_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a higher-aspect ratio reduction.
+        """
+        old_print = {'x':8, 'y':12}
+        new_print = {'x':4, 'y':5}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            - 2)
+
+    def test_resize_print_enlarge_low_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a lower-aspect ratio enlargement.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':7, 'y':12}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            2)
+
+    def test_resize_print_same_low_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a lower-aspect ratio print of same size.
+        """
+        old_print = {'x':4, 'y':6}
+        new_print = {'x':3, 'y':6}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            0)
+
+    def test_resize_print_reduce_low_aspect(self):
+        """
+        Verify values returned by StopTimeConversion.resize_print,
+        for a higher-aspect ratio reduction.
+        """
+        old_print = {'x':8, 'y':12}
+        new_print = {'x':3, 'y':6}
+        self.assertEqual(
+            utils.StopTimeConversion.resize_print_in_stops(
+                old_print, new_print),
+            - 2)

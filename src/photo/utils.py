@@ -122,3 +122,47 @@ class StopTimeConversion(object):
         multiplier = StopTimeConversion.point_difference_to_multiplier(
             points)
         return base_time * multiplier
+
+    @staticmethod
+    def resize_print_in_stops(old_size, new_size):
+        """
+        Calculates exposure adjustment, in stops, needed to resize a print.
+
+        Args:
+            old_size: a dictionary, containing x and y for old print size.
+            new_size: a dictionary, containing x and y for new print size.
+        """
+        old_aspect = old_size['x'] / old_size['y']
+        new_aspect = new_size['x'] / new_size['y']
+
+        aspect_difference = old_aspect - new_aspect
+        if aspect_difference == 0:
+            constant_aspect_new_size = {
+                'x':new_size['x'],
+                'y':new_size['y']}
+            # print("Prints same aspect ratio")
+        elif aspect_difference < 0:
+            # print("new print higher aspect ratio")
+            constant_aspect_new_size = {
+                'x':new_size['x'],
+                'y':old_size['y'] * new_size['x'] / old_size['x']}
+            # print("treating new print as {0}x{1}".format(
+            #    constant_aspect_new_size['x'],
+            #    constant_aspect_new_size['y']))
+        else:
+            # print("new print lower aspect ratio")
+            constant_aspect_new_size = {
+                'x':old_size['x'] * new_size['y'] / old_size['y'],
+                'y':new_size['y']}
+            # print("treating new print as {0}x{1}".format(
+            #    constant_aspect_new_size['x'],
+            #    constant_aspect_new_size['y']))
+        old_area = old_size['x'] * old_size['y']
+        new_area = constant_aspect_new_size['x'] * constant_aspect_new_size['y']
+        size_ratio = new_area / old_area
+        return math.log2(size_ratio)
+
+# old_print = {"x":3,"y":6}
+# new_print = {"x":6,"y":12}
+# stop_adjust = StopTimeConversion.resize_print_in_stops(old_print, new_print)
+# print(stop_adjust)
