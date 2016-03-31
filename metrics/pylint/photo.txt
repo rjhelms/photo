@@ -1,42 +1,41 @@
 ************* Module photo.utils
-I: 10, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
+I: 13, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
+************* Module photo.views
+W:  4, 0: Unused render imported from django.shortcuts (unused-import)
 ************* Module photo.admin
 R: 19, 4: Method could be a function (no-self-use)
 R: 23, 4: Method could be a function (no-self-use)
 R: 54, 4: Method could be a function (no-self-use)
 R: 58, 4: Method could be a function (no-self-use)
 R: 78, 4: Method could be a function (no-self-use)
-************* Module photo.views
-W:  4, 0: Unused render imported from django.shortcuts (unused-import)
+************* Module photo.tests.test_utils
+I:  1, 0: Locally disabling invalid-name (C0103) (locally-disabled)
+I: 12, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
+************* Module photo.migrations.0003_negative_squashed_0004_auto_20160324_1839
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0005_auto_20160324_1927
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0008_auto_20160325_0211
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0002_auto_20160324_1753
+I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0007_auto_20160324_2303
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0001_initial
 I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0004_auto_20160324_1916
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0005_auto_20160324_1927
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0002_auto_20160324_1753
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0003_negative_squashed_0004_auto_20160324_1839
+************* Module photo.migrations.0010_auto_20160325_2233
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0009_auto_20160325_0242
 I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0008_auto_20160325_0211
+************* Module photo.migrations.0004_auto_20160324_1916
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0006_auto_20160324_2225
 I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0010_auto_20160325_2233
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.tests.test_utils
-I: 10, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
-I: 15, 0: Locally disabling invalid-name (C0103) (locally-disabled)
-I: 55, 0: Locally disabling invalid-name (C0103) (locally-disabled)
 
 
 Report
 ======
-358 statements analysed.
+425 statements analysed.
 
 Statistics by type
 ------------------
@@ -46,9 +45,9 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |31     |31         |=          |100.00      |0.00     |
+|class    |33     |33         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |59     |59         |=          |100.00      |0.00     |
+|method   |74     |72         |+2.00      |100.00      |6.76     |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
@@ -76,7 +75,7 @@ External dependencies
         \-deconstruct (photo.utils)
     photo 
       \-models (photo.admin,photo.tests.test_models)
-      \-utils (photo.models,photo.tests.test_utils)
+      \-utils (photo.tests.test_utils,photo.models)
 
 
 
@@ -86,13 +85,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |472    |54.13 |472      |=          |
+|code      |565    |52.80 |551      |+14.00     |
 +----------+-------+------+---------+-----------+
-|docstring |276    |31.65 |276      |=          |
+|docstring |355    |33.18 |347      |+8.00      |
 +----------+-------+------+---------+-----------+
-|comment   |9      |1.03  |9        |=          |
+|comment   |10     |0.93  |10       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |115    |13.19 |115      |=          |
+|empty     |140    |13.08 |138      |+2.00      |
 +----------+-------+------+---------+-----------+
 
 
@@ -116,7 +115,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |0        |=          |
+|convention |0      |1        |-1.00      |
 +-----------+-------+---------+-----------+
 |refactor   |5      |5        |=          |
 +-----------+-------+---------+-----------+
@@ -150,7 +149,7 @@ Messages
 +-----------------+------------+
 |no-self-use      |5           |
 +-----------------+------------+
-|locally-disabled |4           |
+|locally-disabled |3           |
 +-----------------+------------+
 |unused-import    |1           |
 +-----------------+------------+
@@ -159,5 +158,5 @@ Messages
 
 Global evaluation
 -----------------
-Your code has been rated at 9.83/10 (previous run: 9.83/10, +0.00)
+Your code has been rated at 9.86/10 (previous run: 9.83/10, +0.03)
 
