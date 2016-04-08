@@ -1,36 +1,36 @@
 ************* Module photo.utils
 I: 13, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
-************* Module photo.views
-W:  4, 0: Unused render imported from django.shortcuts (unused-import)
 ************* Module photo.admin
 R: 19, 4: Method could be a function (no-self-use)
 R: 23, 4: Method could be a function (no-self-use)
 R: 54, 4: Method could be a function (no-self-use)
 R: 58, 4: Method could be a function (no-self-use)
 R: 78, 4: Method could be a function (no-self-use)
-************* Module photo.tests.test_utils
-I:  1, 0: Locally disabling invalid-name (C0103) (locally-disabled)
-I: 12, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
-************* Module photo.migrations.0003_negative_squashed_0004_auto_20160324_1839
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0005_auto_20160324_1927
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0008_auto_20160325_0211
-I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0002_auto_20160324_1753
-I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.views
+W:  4, 0: Unused render imported from django.shortcuts (unused-import)
 ************* Module photo.migrations.0007_auto_20160324_2303
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0001_initial
 I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0010_auto_20160325_2233
+************* Module photo.migrations.0004_auto_20160324_1916
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0005_auto_20160324_1927
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0002_auto_20160324_1753
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0003_negative_squashed_0004_auto_20160324_1839
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0009_auto_20160325_0242
 I:  1, 0: Ignoring entire file (file-ignored)
-************* Module photo.migrations.0004_auto_20160324_1916
+************* Module photo.migrations.0008_auto_20160325_0211
 I:  1, 0: Ignoring entire file (file-ignored)
 ************* Module photo.migrations.0006_auto_20160324_2225
 I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.migrations.0010_auto_20160325_2233
+I:  1, 0: Ignoring entire file (file-ignored)
+************* Module photo.tests.test_utils
+I:  1, 0: Locally disabling invalid-name (C0103) (locally-disabled)
+I: 12, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)
 
 
 Report
@@ -45,9 +45,9 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |33     |33         |=          |100.00      |0.00     |
+|class    |33     |31         |+2.00      |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |84     |84         |=          |100.00      |13.10    |
+|method   |84     |59         |+25.00     |100.00      |13.10    |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
@@ -65,21 +65,17 @@ External dependencies
       | | \-filters (photo.admin)
       | \-auth (photo.models)
       \-core 
-      | \-exceptions (photo.models,photo.tests.test_models)
+      | \-exceptions (photo.tests.test_models,photo.models)
       \-db 
       | \-models (photo.models)
       |   \-fields (photo.models)
       \-shortcuts (photo.views)
-      \-test (photo.tests.test_utils,photo.tests.test_models)
+      \-test (photo.tests.test_models,photo.tests.test_utils)
       \-utils 
         \-deconstruct (photo.utils)
     photo 
-<<<<<<< HEAD
-      \-models (photo.admin,photo.tests.test_models)
-=======
       \-models (photo.tests.test_models,photo.admin)
->>>>>>> e09ab69b9b6f9c55cdf7daaee820454ad15e7c07
-      \-utils (photo.tests.test_utils,photo.models)
+      \-utils (photo.models,photo.tests.test_utils)
 
 
 
@@ -89,23 +85,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-<<<<<<< HEAD
-|code      |461    |53.48 |461      |=          |
+|code      |632    |52.15 |461      |+171.00    |
 +----------+-------+------+---------+-----------+
-|docstring |276    |32.02 |276      |=          |
+|docstring |404    |33.33 |276      |+128.00    |
 +----------+-------+------+---------+-----------+
-|comment   |9      |1.04  |9        |=          |
+|comment   |23     |1.90  |9        |+14.00     |
 +----------+-------+------+---------+-----------+
-|empty     |116    |13.46 |116      |=          |
-=======
-|code      |643    |52.62 |643      |=          |
-+----------+-------+------+---------+-----------+
-|docstring |404    |33.06 |404      |=          |
-+----------+-------+------+---------+-----------+
-|comment   |23     |1.88  |23       |=          |
-+----------+-------+------+---------+-----------+
-|empty     |152    |12.44 |152      |=          |
->>>>>>> e09ab69b9b6f9c55cdf7daaee820454ad15e7c07
+|empty     |153    |12.62 |116      |+37.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -129,7 +115,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |11       |-11.00     |
+|convention |0      |0        |=          |
 +-----------+-------+---------+-----------+
 |refactor   |5      |5        |=          |
 +-----------+-------+---------+-----------+
@@ -172,5 +158,5 @@ Messages
 
 Global evaluation
 -----------------
-Your code has been rated at 9.87/10 (previous run: 9.64/10, +0.23)
+Your code has been rated at 9.87/10 (previous run: 9.83/10, +0.04)
 
