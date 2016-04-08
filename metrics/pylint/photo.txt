@@ -76,7 +76,7 @@ External dependencies
         \-deconstruct (photo.utils)
     photo 
       \-models (photo.admin,photo.tests.test_models)
-      \-utils (photo.models,photo.tests.test_utils)
+      \-utils (photo.tests.test_utils,photo.models)
 
 
 
@@ -86,13 +86,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |472    |54.13 |472      |=          |
+|code      |461    |53.48 |461      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |276    |31.65 |276      |=          |
+|docstring |276    |32.02 |276      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |9      |1.03  |9        |=          |
+|comment   |9      |1.04  |9        |=          |
 +----------+-------+------+---------+-----------+
-|empty     |115    |13.19 |115      |=          |
+|empty     |116    |13.46 |116      |=          |
 +----------+-------+------+---------+-----------+
 
 

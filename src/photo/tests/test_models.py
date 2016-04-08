@@ -18,7 +18,8 @@ class FilmFormatTestCase(TestCase):
         """
         Test the __str__ method on :model:`photo.FilmFormat`
         """
-        test_format = models.FilmFormat(name="test film_format", roll_film=True)
+        test_format = models.FilmFormat(name="test film_format",
+                                        roll_film=True)
         self.assertEqual(str(test_format), "test film_format",
                          "FilmFormat.__str__ returned unexpected value.")
 
@@ -40,9 +41,8 @@ class FilmTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        cls.manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
-                                               short_name="test")
+        cls.manufacturer = models.Manufacturer.objects.create(
+            name="test manufacturer", short_name="test")
 
     def test_str(self):
         """
@@ -59,9 +59,8 @@ class DeveloperTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        cls.manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
-                                               short_name="test")
+        cls.manufacturer = models.Manufacturer.objects.create(
+            name="test manufacturer", short_name="test")
 
     def test_str(self):
         """
@@ -78,9 +77,8 @@ class FilmRollTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
-                                               short_name="test")
+        manufacturer = models.Manufacturer.objects.create(
+            name="test manufacturer", short_name="test")
         cls.film = models.Film.objects.create(name="test film",
                                               manufacturer=manufacturer,
                                               speed=200, process="B&W")
@@ -170,9 +168,8 @@ class PhotoPaperTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        cls.manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
-                                               short_name="test")
+        cls.manufacturer = models.Manufacturer.objects.create(
+            name="test manufacturer", short_name="test")
 
     def test_clean_multigrade_valid(self):
         """
@@ -230,9 +227,8 @@ class FrameTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        manufacturer = \
-            models.Manufacturer.objects.create(name="test manufacturer",
-                                               short_name="test")
+        manufacturer = models.Manufacturer.objects.create(
+            name="test manufacturer", short_name="test")
         film = models.Film.objects.create(name="test film",
                                           manufacturer=manufacturer,
                                           speed=200, process="B&W")
@@ -274,18 +270,16 @@ class PrintTestCase(TestCase):
     """
     @classmethod
     def setUpTestData(cls):
-        manufacturer = \
-            models.Manufacturer.objects.create(name="manufacturer",
-                                               short_name="test")
+        manufacturer = models.Manufacturer.objects.create(name="manufacturer",
+                                                          short_name="test")
         cls.finish_glossy = models.PhotoPaperFinish.objects.create(name=
                                                                    "glossy")
         cls.finish_matte = models.PhotoPaperFinish.objects.create(name=
                                                                   "matte")
-        cls.photo_paper = \
-            models.PhotoPaper.objects.create(name="photo_paper",
-                                             manufacturer=manufacturer,
-                                             paper_type="RC",
-                                             multigrade=True)
+        cls.photo_paper = models.PhotoPaper.objects.create(
+            name="photo_paper", manufacturer=manufacturer, paper_type="RC",
+            multigrade=True)
+
         cls.photo_paper.finishes.add(cls.finish_glossy)
         cls.photo_paper.save()
 
@@ -301,21 +295,17 @@ class PrintTestCase(TestCase):
         film.formats.add(cls.film_format_120)
         film.save()
 
-        cls.film_roll_120 = \
-            models.FilmRoll.objects.create(name="film_roll_120",
-                                           film=film,
-                                           format=cls.film_format_120,
-                                           shot_speed=200, developed_speed=200)
-        cls.frame_120 = \
-            models.Frame.objects.create(index=1, film_roll=cls.film_roll_120)
+        cls.film_roll_120 = models.FilmRoll.objects.create(
+            name="film_roll_120", film=film, format=cls.film_format_120,
+            shot_speed=200, developed_speed=200)
+        cls.frame_120 = models.Frame.objects.create(
+            index=1, film_roll=cls.film_roll_120)
 
-        cls.film_roll_35mm = \
-            models.FilmRoll.objects.create(name="film_roll_35mm",
-                                           film=film,
-                                           format=cls.film_format_35mm,
-                                           shot_speed=200, developed_speed=200)
-        cls.frame_35mm = \
-            models.Frame.objects.create(index=1, film_roll=cls.film_roll_35mm)
+        cls.film_roll_35mm = models.FilmRoll.objects.create(
+            name="film_roll_35mm", film=film, format=cls.film_format_35mm,
+            shot_speed=200, developed_speed=200)
+        cls.frame_35mm = models.Frame.objects.create(
+            index=1, film_roll=cls.film_roll_35mm)
 
         cls.enlarger = models.Enlarger.objects.create(name="enlarger", type=0,
                                                       color_head=False)
