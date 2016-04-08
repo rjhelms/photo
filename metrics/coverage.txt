@@ -18,12 +18,12 @@ photo/migrations/__init__.py                                             0      
 photo/models.py                                                        118      0     18      0   100%
 photo/tests/__init__.py                                                  0      0      0      0   100%
 photo/tests/test_models.py                                             140      8      0      0    94%
-photo/tests/test_utils.py                                               32      0      0      0   100%
-photo/utils.py                                                          15      0      6      0   100%
+photo/tests/test_utils.py                                              113      0      0      0   100%
+photo/utils.py                                                          51      0     16      0   100%
 photo/views.py                                                           1      1      0      0     0%
 photo_site/__init__.py                                                   0      0      0      0   100%
 photo_site/settings.py                                                  20      0      0      0   100%
 photo_site/urls.py                                                       7      7      2      0     0%
 photo_site/wsgi.py                                                       4      4      0      0     0%
 ------------------------------------------------------------------------------------------------------
-TOTAL                                                                  460     31     28      1    93%
+TOTAL                                                                  577     31     38      1    94%
